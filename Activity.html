@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity - Display User Data</title>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        form{
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label{
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input, select{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button{
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #userData{
+            position: absolute;
+            top: 0;
+            width: 300px;
+            height: 300px;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #userData p{
+            margin: 0;
+            padding: 8px 0;
+            color: #333;
+        }
+
+        @media screen and (max-width:600px){
+            form{
+                width: 80%;
+            }
+
+            #userData{
+                top: 680px;
+                left: 60px;
+                margin: 0 auto;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <form id="userForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" id="birthdate" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" required>
+
+        <button type="button" onclick="submitdata()">Submit</button>
+    </form>
+
+    <div id="userData"></div>
+
+    <script>
+        function submitdata(){
+
+            let userdata = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                birthdate: document.getElementById('birthdate').value,
+                address: document.getElementById('address').value,
+                email: document.getElementById('email').value,
+
+                data: function(){
+                    let info = "First Name: " + userdata.firstName + "<br>" +
+                               "Last Name: " + userdata.lastName + "<br>" +
+                               "Age: " + userdata.age + "<br>" +
+                               "Gender: " + userdata.gender + "<br>" +
+                               "Birthdate: " + userdata.birthdate + "<br>" +
+                               "Address: " + userdata.address + "<br>" +
+                               "Email: " + userdata.email;
+
+                    document.getElementById("userData").innerHTML = info;
+                }
+            };
+            userdata.data();
+        }
+    </script>
+
+</body>
+</html>
